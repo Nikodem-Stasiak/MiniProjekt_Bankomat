@@ -1,17 +1,32 @@
 public class KontoBankowe {
     private int saldo;
+    private String numerKonta;
+    private int pin;
 
-    public KontoBankowe(int saldoPodane){
+    public KontoBankowe(String numerKonta, int pin,int saldoPodane){
+        this.numerKonta = numerKonta;
+        this.pin = pin;
         this.saldo = saldoPodane;
     }
 
-    public KontoBankowe() {
+    public KontoBankowe(String numerKonta, int pin) {
+        this.numerKonta = numerKonta;
+        this.pin = pin;
         this.saldo = 0;
+    }
+
+    public String getNumerKonta(){
+        return this.numerKonta;
+    }
+
+    public int getPin(){
+        return  this.pin;
     }
 
     public  int getSaldo(){
         return this.saldo;
     }
+
 
     public void wplac(int kwota){
         this.saldo += kwota;

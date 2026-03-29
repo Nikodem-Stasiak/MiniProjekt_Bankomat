@@ -41,4 +41,8 @@ public class KontoBankowe {
             System.out.println("Wypłacono: " + kwota);
         }
     }
+
+    public void setSaldo(int noweSaldo) {
+        this.saldo = noweSaldo;
+    }
 }

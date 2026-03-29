@@ -6,7 +6,7 @@ Projekt edukacyjny realizowany w ramach przygotowań do roli **Junior Java Devel
 
 Projekt podzielony jest na dwa etapy rozwoju:
 
-### 1. wersja Terminalowa (`BankomatTerminal.java`)
+### 1. wersja Terminalowa (`BankomatMain.java`)
 * **Interfejs:** Tekstowy (konsola).
 * **Logika:** Podstawowe operacje bankowe przy użyciu klasy `Scanner`.
 * **Cel:** Zrozumienie podstaw składni Javy, pętli i warunków logicznych.

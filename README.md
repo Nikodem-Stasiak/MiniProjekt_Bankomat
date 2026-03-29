@@ -1,34 +1,42 @@
-# 🏦 Java ATM GUI Project
+# 🏦 Java ATM: From Terminal to GUI
 
-Projekt funkcjonalnego bankomatu stworzony w ramach ścieżki rozwoju **Junior Java Developer 2026**. Aplikacja posiada graficzny interfejs użytkownika oraz system trwałego przechowywania danych.
+Projekt edukacyjny realizowany w ramach przygotowań do roli **Junior Java Developer 2026**. Repozytorium zawiera ewolucję aplikacji bankomatowej – od prostego skryptu konsolowego po pełnoprawną aplikację okienkową.
 
-## 🚀 Funkcjonalności
-- **System logowania:** Weryfikacja numeru konta i kodu PIN z obsługą błędów (try-catch).
-- **Zarządzanie kontem:** Sprawdzanie salda, wpłaty i wypłaty środków.
-- **Bezpieczeństwo transakcji:** Walidacja dostępnych środków przed wypłatą.
-- **Persystencja danych:** Automatyczny odczyt i zapis bazy kont do pliku `baza_kont.txt`.
-- **Dynamiczne GUI:** Płynne przełączanie między ekranem logowania a menu głównym (Swing).
+## 📁 Zawartość Repozytorium
 
-## 🛠 Technologie
-- **Język:** Java 17+
-- **Biblioteki GUI:** Java Swing, AWT
-- **Przechowywanie danych:** File I/O (FileWriter, Scanner)
-- **Narzędzia:** Git
+Projekt podzielony jest na dwa etapy rozwoju:
 
-## 📂 Struktura pliku danych
-Dane przechowywane są w formacie: `numer_konta;pin;saldo`.
-Przykład: `12345;1111;5000`
+### 1. wersja Terminalowa (`BankomatTerminal.java`)
+* **Interfejs:** Tekstowy (konsola).
+* **Logika:** Podstawowe operacje bankowe przy użyciu klasy `Scanner`.
+* **Cel:** Zrozumienie podstaw składni Javy, pętli i warunków logicznych.
 
-## 🏁 Jak uruchomić?
-1. Sklonuj repozytorium.
-2. Upewnij się, że masz plik `baza_kont.txt` w folderze głównym (program wygeneruje domyślne konta, jeśli plik nie istnieje).
-3. Skompiluj i uruchom klasę `BankomatGUI`.
-
-## 📈 Roadmap (Cel: Lato 2026)
-- [ ] Refaktoryzacja kodu do wzorca MVC.
-- [ ] Implementacja bazy danych SQL (PostgreSQL/MySQL).
-- [ ] Migracja na Spring Boot i stworzenie wersji Webowej.
-- [ ] Dodanie testów jednostkowych JUnit.
+### 2. Wersja GUI (`BankomatGUI.java`) - AKTUALNA
+* **Interfejs:** Graficzny (biblioteka **Java Swing**).
+* **Logika:** Zarządzanie stanem aplikacji, obsługa zdarzeń (ActionListeners).
+* **Persystencja:** Dane są trwale zapisywane i odczytywane z pliku `baza_kont.txt`.
+* **Bezpieczeństwo:** Obsługa błędów formatowania danych (try-catch).
 
 ---
-*Projekt rozwijany w celach edukacyjnych.*
+
+## 🚀 Funkcje Aplikacji (GUI)
+- ✅ Logowanie numerem konta i kodem PIN.
+- ✅ Sprawdzanie salda w czasie rzeczywistym.
+- ✅ Wpłaty i wypłaty z walidacją środków.
+- ✅ System wylogowywania i powrotu do ekranu startowego.
+- ✅ Automatyczna synchronizacja z bazą danych w pliku `.txt`.
+
+## 🛠️ Technologie
+- **Język:** Java 17+
+- **Biblioteki:** Swing, AWT (GUI), Java IO (Przechowywanie danych).
+- **Narzędzia:** Git (Kontrola wersji).
+
+## 🏁 Jak uruchomić?
+W zależności od tego, którą wersję chcesz przetestować, uruchom odpowiednią klasę `main`:
+- Dla wersji w oknie: `BankomatGUI.java`
+- Dla wersji w konsoli: `BankomatTerminal.java`
+
+*Uwaga: Obie wersje korzystają z tego samego pliku `baza_kont.txt`, więc zmiany w jednej są widoczne w drugiej!*
+
+---
+**Status projektu:** Rozwijany. Kolejny krok: Refaktoryzacja i Bazy Danych SQL.

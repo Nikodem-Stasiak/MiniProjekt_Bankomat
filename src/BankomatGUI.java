@@ -69,8 +69,19 @@ public class BankomatGUI {
         rama.add(polePin);
 
         JButton przyciskLoguj = new JButton("Zaloguj");
-        przyciskLoguj.setBounds(150, 150, 100, 40);
+        przyciskLoguj.setBounds(125, 150, 150, 40);
         rama.add(przyciskLoguj);
+
+        JButton przyciskRejestracji = new JButton("Załóż konto");
+        przyciskRejestracji.setBounds(125,200,150,40);
+        rama.add(przyciskRejestracji);
+
+        przyciskRejestracji.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pokazEkranRejestracji();
+            }
+        });
 
         przyciskLoguj.addActionListener(new ActionListener() {
             @Override
@@ -192,6 +203,86 @@ public class BankomatGUI {
                 rama.repaint();
             }
         });
+
+        rama.revalidate();
+        rama.repaint();
+    }
+
+    private void pokazEkranRejestracji() {
+        rama.getContentPane().removeAll();
+
+        JLabel info = new JLabel("TUTAJ TWORZYSZ NOWE KONTO");
+        info.setBounds(100, 20, 200, 30);
+        rama.add(info);
+
+        JLabel labelNr = new JLabel("Nowy numer konta:");
+        labelNr.setBounds(20, 70, 150, 30);
+        rama.add(labelNr);
+
+        JTextField poleNowyNr = new JTextField();
+        poleNowyNr.setBounds(170, 70, 150, 30);
+        rama.add(poleNowyNr);
+
+        JLabel labelPin = new JLabel("Ustal PIN (4 cyfry):");
+        labelPin.setBounds(20, 120, 150, 30);
+        rama.add(labelPin);
+
+        JPasswordField poleNowyPin = new JPasswordField();
+        poleNowyPin.setBounds(170, 120, 150, 30);
+        rama.add(poleNowyPin);
+
+        JButton przyciskOK = new JButton("Zatwierdź");
+        przyciskOK.setBounds(125, 180, 150, 40);
+        rama.add(przyciskOK);
+
+        przyciskOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nowyNumer = poleNowyNr.getText().trim();
+                String pinStr = new String(poleNowyPin.getPassword());
+
+                if(nowyNumer.isEmpty() || pinStr.isEmpty()){
+                    JOptionPane.showMessageDialog(rama, "Błąd: Wszystkie pola muszą być wypełnione!", "Brak danych", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                try {
+                    int nowyPin = Integer.parseInt(pinStr);
+                    if(pinStr.length() != 4){
+                        JOptionPane.showMessageDialog(rama, "Błąd: PIN musi mieć dokładnie 4 cyfry!", "Zły format", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    boolean czyJuzJest = false;
+
+                    for(KontoBankowe k : listaKont){
+                        if(k.getNumerKonta().equals(nowyNumer)){
+                            czyJuzJest = true;
+                            break;
+                        }
+                    }
+
+                    if (czyJuzJest) {
+                        JOptionPane.showMessageDialog(rama, "Błąd: Konto o takim numerze już istnieje!", "Zajęty numer", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        KontoBankowe noweKonto = new KontoBankowe(nowyNumer, nowyPin, 0);
+                        listaKont.add(noweKonto);
+                        zapiszDoPliku();
+                        JOptionPane.showMessageDialog(rama, "Gratulacje! Konto " + nowyNumer + " zostało założone.", "Sukces", JOptionPane.INFORMATION_MESSAGE);
+                        pokazEkranLogowania();
+                    }
+
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(rama, "Błąd: PIN musi składać się wyłącznie z cyfr!", "Błąd formatu", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        JButton przyciskWstecz = new JButton("Anuluj");
+        przyciskWstecz.setBounds(125, 230, 150, 30);
+        rama.add(przyciskWstecz);
+
+        przyciskWstecz.addActionListener(x -> pokazEkranLogowania());
 
         rama.revalidate();
         rama.repaint();

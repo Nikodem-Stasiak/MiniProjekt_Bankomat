@@ -45,15 +45,15 @@ Aplikacja korzysta z pliku `baza_kont.txt`. Dane są strukturyzowane w formacie 
    git clone [https://github.com/Nikodem-Stasiak/MiniProjekt_Bankomat.git](https://github.com/Nikodem-Stasiak/MiniProjekt_Bankomat.git)
 
 📈 Roadmap (Plany na 2026)
-[x] Implementacja GUI (Swing)
+* [x] Implementacja GUI (Swing)
 
-[x] System rejestracji i walidacji
+* [x] System rejestracji i walidacji
 
-[ ] Refaktoryzacja do wzorca MVC (Model-View-Controller)
+* [ ] Refaktoryzacja do wzorca MVC (Model-View-Controller)
 
-[ ] Migracja na bazę danych SQL (H2 lub MySQL)
+* [ ] Migracja na bazę danych SQL (H2 lub MySQL)
 
-[ ] Dodanie historii transakcji dla każdego użytkownika
+* [ ] Dodanie historii transakcji dla każdego użytkownika
 
 Autor: Nikodem Stasiak
 

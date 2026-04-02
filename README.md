@@ -44,7 +44,9 @@ Aplikacja korzysta z pliku `baza_kont.txt`. Dane są strukturyzowane w formacie 
    ```bash
    git clone [https://github.com/Nikodem-Stasiak/MiniProjekt_Bankomat.git](https://github.com/Nikodem-Stasiak/MiniProjekt_Bankomat.git)
 
-📈 Roadmap (Plany na 2026)
+---
+
+## 📈 Roadmap (Plany na 2026)
 * [x] Implementacja GUI (Swing)
 
 * [x] System rejestracji i walidacji

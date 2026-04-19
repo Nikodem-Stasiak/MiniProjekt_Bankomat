@@ -6,6 +6,7 @@ import java.io.File;
 public class BankomatMain {
     public static void main(String[] args) {
         DatabaseConnector.setupDatabase();
+        DatabaseConnector.dodajKonto("12345", "1111", 5000.0);
         ArrayList<KontoBankowe> listaKont = new ArrayList<>();
         Scanner skaner = new Scanner(System.in);
         boolean czyDziala = true;

@@ -25,4 +25,23 @@ public class DatabaseConnector {
             System.out.println("Ups! Coś nie tak z bazą: " + e.getMessage());
         }
     }
+
+    public static void dodajKonto(String numer, String pin, double saldo) {
+        String sql = "INSERT INTO konta (numer, pin, saldo) VALUES (?, ?, ?);";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, numer);
+            pstmt.setString(2, pin);
+            pstmt.setDouble(3, saldo);
+
+            pstmt.executeUpdate();
+
+            System.out.println("Sukces! Konto o numerze " + numer + " zostało zapisane w bazie.");
+
+        } catch (SQLException e) {
+            System.out.println("Błąd podczas dodawania konta: " + e.getMessage());
+        }
+    }
 }
